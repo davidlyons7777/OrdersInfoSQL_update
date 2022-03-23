@@ -10,7 +10,9 @@ Module Module1
     Sub Main(ByVal feed() As String)
         Dim command As String = feed(0)
 
-        'command = "UPDATE orders_info SET order_price='100.00' WHERE order_num = '08234P01'"
+
+        'newValue = "108.99"
+        'au = "00196P01"
 
         Try
             updateDev(command) 'Dev
@@ -24,12 +26,12 @@ leave_sub:
 
 
 
-    Sub updateDev(ByVal input As String)
+    Sub updateDev(ByVal command As String)
 
         Dim sqlConnection As New OdbcConnection
         sqlConnection = New OdbcConnection("DSN=OMS_Dev;MultipleActiveResultSets=True")
         Dim sqlCommand As New OdbcCommand
-        sqlCommand.CommandText = input
+        sqlCommand.CommandText = command
         sqlCommand.Connection = sqlConnection
 
         Try
